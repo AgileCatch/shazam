@@ -294,6 +294,39 @@ class ThirdTab extends StatelessWidget {
       ],
     };
 
-    return Center(child: Text('세번째 페이지'));
+    return SafeArea(
+      child: Column(
+        children: [
+          Text(
+            '차트',
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(height: 20),
+          Expanded(
+              child: ListView(
+            children: [
+              Stack(
+                alignment: Alignment.center,
+                children: [
+                  Container(
+                    width: double.infinity,
+                    height: 180,
+                    color: Colors.purple[900],
+                  ),
+                  Column(
+                    children: [
+                      Container(width: MediaQuery.of(context).size.width * 0.8)
+                    ],
+                  )
+                ],
+              )
+            ],
+          ))
+        ],
+      ),
+    );
   }
 }
