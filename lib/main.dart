@@ -318,7 +318,27 @@ class ThirdTab extends StatelessWidget {
                   ),
                   Column(
                     children: [
-                      Container(width: MediaQuery.of(context).size.width * 0.8)
+                      ElevatedButton(
+                        onPressed: () {},
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.white),
+                        ),
+                        child: Text(
+                          '국가 및 도시별 차트',
+                          style: TextStyle(
+                            color: Colors.purple[900],
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      Text(
+                        '전 세계',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )
                     ],
                   )
                 ],
