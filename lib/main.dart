@@ -128,7 +128,109 @@ class SecondTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('두번째 페이지'));
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [Colors.blue[300]!, Colors.blue[900]!],
+        ),
+      ),
+      child: SafeArea(
+        child: Column(
+          children: [
+            //상단의 탭을 선택하기위한 아이콘과 텍스트
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+              child: Row(
+                children: [
+                  GestureDetector(
+                    //라이브러리탭을선택하면 해당탭으로 전환할 수 있도록해줌
+                    onTap: () {
+                      DefaultTabController.of(context).animateTo(0);
+                    },
+                    child: Column(
+                      children: [
+                        Icon(
+                          Icons.person,
+                          color: Colors.white,
+                        ),
+                        Text(
+                          "라이브러리",
+                          style: TextStyle(color: Colors.white),
+                        )
+                      ],
+                    ),
+                  ),
+                  Spacer(),
+                  GestureDetector(
+                    onTap: () {
+                      //차트탭을 선택하면 탭을 전환
+                      DefaultTabController.of(context).animateTo(2);
+                    },
+                    child: Column(
+                      children: [
+                        Icon(
+                          Icons.show_chart,
+                          color: Colors.white,
+                        ),
+                        Text(
+                          "차트",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.1), //투명박스
+            Text(
+              "Shazam하려면 탭하세요",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.06),
+            Container(
+              //로고이미지
+              alignment: Alignment.center,
+              width: 200,
+              height: 200,
+              decoration: BoxDecoration(
+                color: Colors.blue[300],
+                shape: BoxShape.circle,
+              ),
+              child: Image.network(
+                //투명박스안에 로고이미지를 넣어줌
+                "https://i.ibb.co/hxNbZ8p/shazam.png",
+                color: Colors.white,
+                width: 130,
+                height: 130,
+              ),
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.12), //투명박스
+            Container(
+              width: 50,
+              height: 50,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: Colors.blue[400],
+                shape: BoxShape.circle,
+              ),
+              child: Icon(
+                Icons.search,
+                color: Colors.white,
+                size: 30,
+              ),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
 
