@@ -304,7 +304,7 @@ class ThirdTab extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 20),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.03),
           Expanded(
               child: ListView(
             children: [
@@ -318,17 +318,20 @@ class ThirdTab extends StatelessWidget {
                   ),
                   Column(
                     children: [
-                      ElevatedButton(
-                        onPressed: () {},
-                        style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.white),
-                        ),
-                        child: Text(
-                          '국가 및 도시별 차트',
-                          style: TextStyle(
-                            color: Colors.purple[900],
-                            fontWeight: FontWeight.bold,
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.8,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.white),
+                          ),
+                          child: Text(
+                            '국가 및 도시별 차트',
+                            style: TextStyle(
+                              color: Colors.purple[900],
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),
