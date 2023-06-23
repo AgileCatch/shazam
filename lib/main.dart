@@ -118,7 +118,123 @@ class FirstTab extends StatelessWidget {
       },
     ];
 
-    return Center(child: Text('첫번째 페이지'));
+    return SafeArea(
+      child: Column(
+        children: [
+          Row(
+            children: [
+              IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.settings),
+              ),
+              Expanded(
+                child: Text(
+                  '라이브러리',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  textAlign: TextAlign.center, // 텍스트 가운데정렬
+                ),
+              ),
+              Icon(
+                Icons.settings,
+                color: Colors.white,
+              ),
+            ],
+          ),
+          SizedBox(width: 8),
+          Padding(
+            padding: const EdgeInsets.all(15),
+            child: Row(
+              children: [
+                Image.network(
+                  //투명박스안에 로고이미지를 넣어줌
+                  "https://i.ibb.co/hxNbZ8p/shazam.png",
+                  width: 20,
+                  height: 20,
+                ),
+                SizedBox(
+                  height: 10,
+                  width: 10,
+                ),
+                Text(
+                  'Shazam',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                )
+              ],
+            ),
+          ),
+          Container(
+            width: MediaQuery.of(context).size.width * 0.92,
+            child: Divider(
+              color: Colors.grey,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(15),
+            child: Row(
+              children: [
+                Icon(Icons.person),
+                SizedBox(
+                  width: 20,
+                ),
+                Text(
+                  '아티스트',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                )
+              ],
+            ),
+          ),
+          Container(
+            width: MediaQuery.of(context).size.width * 0.92,
+            child: Divider(
+              color: Colors.grey,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(15),
+            child: Row(
+              children: [
+                Icon(
+                  Icons.music_note,
+                  weight: 20,
+                ),
+                SizedBox(
+                  height: 10,
+                  width: 10,
+                ),
+                Text(
+                  '회원님을 위한 재생목록',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                )
+              ],
+            ),
+          ),
+          Container(
+            width: MediaQuery.of(context).size.width * 0.92,
+            child: Divider(
+              color: Colors.grey,
+            ),
+          ),
+          Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(15),
+                child: Text(
+                  '최근  Shazam',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+              )
+            ],
+          ),
+          Row(
+            children: [
+              Column(
+                children: [],
+              ),
+            ],
+          )
+        ],
+      ),
+    );
   }
 }
 
@@ -378,6 +494,136 @@ class ThirdTab extends StatelessWidget {
                         Row(
                           children: [
                             ...chartData['korea']!.map(
+                              (song) {
+                                String imageUrl = song['imageUrl']!;
+                                String name = song['name']!;
+                                String artist = song['artist']!;
+
+                                return Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment
+                                        .start, // 텍스트를 왼쪽 정렬로 설정
+                                    children: [
+                                      Image.network(
+                                        imageUrl,
+                                        width: 120,
+                                        height: 120,
+                                      ),
+                                      Text(
+                                        name,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      Text(artist),
+                                    ],
+                                  ),
+                                );
+                              },
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+                Container(
+                  height: 7,
+                  width: MediaQuery.of(context).size.width,
+                  color: Colors.grey,
+                ),
+                Row(
+                  children: [
+                    Column(
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width * 1,
+                          child: Padding(
+                            padding: const EdgeInsets.all(9.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  '글로벌 차트',
+                                  style: TextStyle(fontSize: 17),
+                                ), //글꼴크기조절
+                                Text(
+                                  '모두보기',
+                                  style: TextStyle(
+                                      fontSize: 14, color: Colors.blue),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            ...chartData['global']!.map(
+                              (song) {
+                                String imageUrl = song['imageUrl']!;
+                                String name = song['name']!;
+                                String artist = song['artist']!;
+
+                                return Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment
+                                        .start, // 텍스트를 왼쪽 정렬로 설정
+                                    children: [
+                                      Image.network(
+                                        imageUrl,
+                                        width: 120,
+                                        height: 120,
+                                      ),
+                                      Text(
+                                        name,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      Text(artist),
+                                    ],
+                                  ),
+                                );
+                              },
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+                Container(
+                  height: 7,
+                  width: MediaQuery.of(context).size.width,
+                  color: Colors.grey,
+                ),
+                Row(
+                  children: [
+                    Column(
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width * 1,
+                          child: Padding(
+                            padding: const EdgeInsets.all(9.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  '뉴욕 차트',
+                                  style: TextStyle(fontSize: 17),
+                                ), //글꼴크기조절
+                                Text(
+                                  '모두보기',
+                                  style: TextStyle(
+                                      fontSize: 14, color: Colors.blue),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            ...chartData['newyork']!.map(
                               (song) {
                                 String imageUrl = song['imageUrl']!;
                                 String name = song['name']!;
