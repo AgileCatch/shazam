@@ -346,6 +346,11 @@ class ThirdTab extends StatelessWidget {
                     )
                   ],
                 ),
+                Container(
+                  height: 7,
+                  width: MediaQuery.of(context).size.width,
+                  color: Colors.grey,
+                ),
                 Row(
                   children: [
                     Column(
@@ -371,7 +376,36 @@ class ThirdTab extends StatelessWidget {
                           ),
                         ),
                         Row(
-                          children: [],
+                          children: [
+                            ...chartData['korea']!.map(
+                              (song) {
+                                String imageUrl = song['imageUrl']!;
+                                String name = song['name']!;
+                                String artist = song['artist']!;
+
+                                return Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment
+                                        .start, // 텍스트를 왼쪽 정렬로 설정
+                                    children: [
+                                      Image.network(
+                                        imageUrl,
+                                        width: 120,
+                                        height: 120,
+                                      ),
+                                      Text(
+                                        name,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      Text(artist),
+                                    ],
+                                  ),
+                                );
+                              },
+                            ),
+                          ],
                         )
                       ],
                     ),
